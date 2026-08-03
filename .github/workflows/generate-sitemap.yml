@@ -1,0 +1,53 @@
+name: Generate Sitemap
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:   # Allows manual trigger too
+
+jobs:
+  generate-sitemap:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate sitemap.xml
+        run: |
+          echo '<?xml version="1.0" encoding="UTF-8"?>' > sitemap.xml
+          echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' >> sitemap.xml
+
+          # Homepage
+          echo '  <url>' >> sitemap.xml
+          echo '    <loc>https://oven2af.com/</loc>' >> sitemap.xml
+          echo '    <priority>1.0</priority>' >> sitemap.xml
+          echo '  </url>' >> sitemap.xml
+
+          # Find all HTML files and add them
+          find . -name "*.html" ! -name "index.html" | while read file; do
+            # Convert file path to URL
+            url_path=$(echo "$file" | sed 's|^\./||' | sed 's|index.html||')
+            echo '  <url>' >> sitemap.xml
+            echo "    <loc>https://oven2af.com/$url_path</loc>" >> sitemap.xml
+            echo '    <priority>0.8</priority>' >> sitemap.xml
+            echo '  </url>' >> sitemap.xml
+          done
+
+          echo '</urlset>' >> sitemap.xml
+
+          echo "Sitemap generated successfully:"
+          cat sitemap.xml
+
+      - name: Commit and push sitemap (if changed)
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add sitemap.xml
+          git diff --quiet && git diff --staged --quiet || git commit -m "chore: auto-update sitemap.xml"
+          git push
