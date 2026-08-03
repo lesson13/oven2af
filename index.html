@@ -123,7 +123,13 @@
                             <i class="fa-solid fa-clock text-3xl text-zinc-700"></i>
                         </div>
                     </div>
-                    <div id="tips" class="mt-5 text-sm bg-zinc-900 border border-zinc-700 p-4 rounded-2xl text-zinc-300"></div>
+                    <div id="tips" class="mt-5 text-sm bg-zinc-900 border border-zinc-700 p-4 rounded-2xl text-zinc-300"></div> 
+                    <div id="related-guide" class="mt-5 hidden">
+                      <a id="related-guide-link" href="#" class="block bg-zinc-900 border border-orange-500/40 hover:border-orange-500 rounded-2xl p-4 transition-all">
+                        <div class="text-sm text-orange-400 mb-1">Related Guide</div>
+                        <div id="related-guide-title" class="font-medium text-white"></div>
+                      </a>
+                    </div>
                 </div>
             </div>
 
@@ -177,6 +183,9 @@
                     document.getElementById('ovenTemp').value = p.tempF;
                     document.getElementById('ovenTime').value = p.time;
                     calculateConversion(p);
+                    showRelatedGuide(p.name);
+
+
                 };
                 container.appendChild(btn);
             });
@@ -211,6 +220,56 @@
             setUnit('F');
             setTimeout(() => document.querySelector('#presets button')?.click(), 300);
         };
+       // Related guides mapping
+const relatedGuides = {
+  "Chicken Breast": {
+    title: "Crispy Air Fryer Chicken Breast Guide",
+    url: "/guides/crispy-chicken-breast.html"
+  },
+  "Chicken Thighs": {
+    title: "Crispy Air Fryer Chicken Breast Guide",
+    url: "/guides/crispy-chicken-breast.html"
+  },
+  "French Fries": {
+    title: "Air Fryer Conversion Guide for Frozen Foods",
+    url: "/guides/air-fryer-frozen-foods-conversion.html"
+  },
+  "Vegetables": {
+    title: "Ultimate Oven to Air Fryer Conversion Guide",
+    url: "/guides/ultimate-conversion-guide.html"
+  },
+  "Cookies": {
+    title: "How to Convert Baking Recipes to the Air Fryer",
+    url: "/guides/convert-baking-recipes-to-air-fryer.html"
+  },
+  "Fish / Salmon": {
+    title: "Ultimate Oven to Air Fryer Conversion Guide",
+    url: "/guides/ultimate-conversion-guide.html"
+  },
+  "Roast": {
+    title: "Ultimate Oven to Air Fryer Conversion Guide",
+    url: "/guides/ultimate-conversion-guide.html"
+  },
+  "Custom": {
+    title: "Oven to Air Fryer Conversion Chart",
+    url: "/guides/oven-to-air-fryer-conversion-chart.html"
+  }
+};
+
+function showRelatedGuide(presetName) {
+  const guide = relatedGuides[presetName];
+  const container = document.getElementById('related-guide');
+  const link = document.getElementById('related-guide-link');
+  const title = document.getElementById('related-guide-title');
+
+  if (guide) {
+    link.href = guide.url;
+    title.textContent = guide.title;
+    container.classList.remove('hidden');
+  } else {
+    container.classList.add('hidden');
+  }
+}
     </script>
 </body>
 </html>
