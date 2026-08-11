@@ -13,23 +13,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://oven2af.com/guides/oven-to-air-fryer-conversion-chart.html</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://oven2af.com/guides/common-mistakes.html</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://oven2af.com/guides/convert-baking-recipes-to-air-fryer.html</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://oven2af.com/guides/best-air-fryer-temperature-for-chicken.html</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://oven2af.com/guides/ultimate-conversion-guide.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
@@ -37,7 +21,23 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://oven2af.com/guides/best-air-fryer-temperature-for-chicken.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://oven2af.com/guides/oven-to-air-fryer-conversion-chart.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://oven2af.com/guides/convert-baking-recipes-to-air-fryer.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://oven2af.com/guides/air-fryer-frozen-foods-conversion.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://oven2af.com/guides/ultimate-conversion-guide.html</loc>
     <priority>0.8</priority>
   </url>
 </urlset>
